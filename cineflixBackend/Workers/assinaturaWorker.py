@@ -36,6 +36,17 @@ class assinaturaWorker:
         for field in required_fields:
             if field not in data or not data[field]:
                 raise ValueError(f"O campo '{field}' é obrigatório.")
+
+        usuarios = self.usuarioRepo.getByUsername(data["username"])
+        if not usuarios:
+            raise ValueError("Usuário não encontrado.")
+
+        usuario_id = usuarios[0]["id"]
+        assinatura_data = {
+            "usuario_id": usuario_id,
+            "data_inicial": data["data_inicial"],
+            "data_final": data["data_final"]
+        }
         return self.repository.update(id, data)
 
     def delete(self, id):
