@@ -1,28 +1,42 @@
 from Repositories.assinaturaRepository import assinaturaRepository
+from Repositories.usuarioRepository import usuarioRepository
 
 class assinaturaWorker:
-  def __init__(self):
-    self.repository = assinaturaRepository()
+    def __init__(self):
+        self.repository = assinaturaRepository()
+        self.usuarioRepo = usuarioRepository()
 
-  def getAll(self):
-    return self.repository.getAll()
+    def getAll(self):
+        return self.repository.getAll()
 
-  def getById(self, id):
-    return self.repository.getById(id)
+    def getById(self, id):
+        return self.repository.getById(id)
 
-  def create(self, data):
-    required_files = ("usuario_id", "data_inicial", "data_final")
-    for field in required_files:
-      if field not in data or not data[field]:
-        raise ValueError(f"O campo {field} é obrigatório.")
-    return self.repository.create(data)
+    def create(self, data):
+        required_fields = ("username", "data_inicial", "data_final")
+        for field in required_fields:
+            if field not in data or not data[field]:
+                raise ValueError(f"O campo '{field}' é obrigatório.")
+              
+        usuarios = self.usuarioRepo.getByUsername(data["username"])
+        if not usuarios:
+            raise ValueError("Usuário não encontrado.")
 
-  def update(self, data, id):
-    required_files = ("usuario_id", "data_inicial", "data_final")
-    for field in required_files:
-      if field not in data or not data[field]:
-        raise ValueError(f"O campo {field} é obrigatório.")
-    return self.repository.update(data, id)
+        usuario_id = usuarios[0]["id"]
+        assinatura_data = {
+            "usuario_id": usuario_id,
+            "data_inicial": data["data_inicial"],
+            "data_final": data["data_final"]
+        }
 
-  def delete(self, id):
-    return self.repository.delete(id)
+        return self.repository.create(assinatura_data)
+
+    def update(self, id, data):
+        required_fields = ("usuario_id", "data_inicial", "data_final")
+        for field in required_fields:
+            if field not in data or not data[field]:
+                raise ValueError(f"O campo '{field}' é obrigatório.")
+        return self.repository.update(id, data)
+
+    def delete(self, id):
+        return self.repository.delete(id)
