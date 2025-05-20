@@ -4,6 +4,10 @@ class usuarioRepository:
     def __init__(self):
         self.baserepository = BaseRepository()
 
+    def getByUsername(self, username):
+        query = "select * from usuarios where username = %s"
+        return self.baserepository.fetch(query, (username,))
+
     def getAll(self):
         query = "select * from usuarios"
         return self.baserepository.execute(query)
