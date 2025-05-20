@@ -1,6 +1,6 @@
 from Repositories.BaseRepository import BaseRepository
 
-class assinaturaReposiory():
+class assinaturaReposiory:
   def __init__(self):
     self.baseRepository = BaseRepository()
 
