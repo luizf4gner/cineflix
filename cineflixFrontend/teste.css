@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(-45deg, #667eea, #764ba2, #6b73ff, #8e54e9);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.4s ease;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+input[type="password"],
+input[type="text"] {
+    padding: 10px 14px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    background-color: #eef2ff;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+    border-color: #667eea;
+    outline: none;
+}
+
+input::placeholder {
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+input:focus::placeholder {
+    color: #bbb;
+}
+
+input[type="checkbox"] {
+    accent-color: #667eea;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-right: 6px;
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.2);
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+label:hover {
+    color: #667eea;
+}
+
+/* Botão de login */
+.login-btn {
+    padding: 10px 20px;
+    background: #667eea;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+}
+
+/* Barra de força da senha */
+#strength-bar {
+    width: 100%;
+    max-width: 250px;
+    height: 8px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 8px auto;
+}
+
+#strength-bar span {
+    display: block;
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+/* Botão modo escuro */
+#toggle-theme {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+#toggle-theme:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background: linear-gradient(-45deg, #2d2d2d, #1c1c1c, #3a3a3a, #0e0e0e);
+}
+
+body.dark-mode .container {
+    background-color: #1f1f1f;
+    color: white;
+}
+
+body.dark-mode input,
+body.dark-mode input:focus {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+body.dark-mode input::placeholder {
+    color: #aaa;
+}
+
+body.dark-mode label {
+    color: #ccc;
+}
+
+body.dark-mode .login-btn {
+    background: #8e54e9;
+}
+
+body.dark-mode .login-btn:hover {
+    background: #764ba2;
+}
