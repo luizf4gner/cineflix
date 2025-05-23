@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CineFlix - Login</title>
+    <link rel="stylesheet" href="cadastro.css" />
+</head>
+<body>
+    <button id="toggle-theme">🌙 Modo Escuro</button>
+
+    <div class="container" id="login-section">
+        <h1>Bem-vindo ao CineFlix</h1>
+        <input type="text" id="username" placeholder="Nome de usuário" />
+        <input type="password" id="senha" placeholder="Senha" />
+        <button class="login-btn" onclick="logar()">Entrar</button>
+        <p id="mensagem"></p>
+    </div>
+
+    <div class="container" id="menu-section" style="display: none;">
+        <h1>Olá, <span id="usuario-logado"></span></h1>
+        <nav>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="cadastro.html"><button class="login-btn">Usuários</button></a></li>
+                <li><a href="assinatura.html"><button class="login-btn">Assinaturas</button></a></li>
+                <li><a href="series_filmes.html"><button class="login-btn">Séries e Filmes</button></a></li>
+                <li><a href="historico.html"><button class="login-btn">Histórico</button></a></li>
+                <li><a href="recomendacoes.html"><button class="login-btn">Recomendações</button></a></li>
+                <li><button class="login-btn" onclick="logout()">Sair</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
